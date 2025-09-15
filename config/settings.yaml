@@ -1,12 +1,34 @@
-project: weather_etl
-locations:
-  bronze: s3a://bronze/openmeteo/
-  silver: s3a://silver/openmeteo/
-  gold:   s3a://gold/openmeteo/
+# settings.yaml - Project Configuration
+
+# ✅ Weather API Configuration
 source:
-  lat: 40.71
-  lon: -74.00
-  timezone: America/New_York
-  base_url: https://api.open-meteo.com/v1/forecast
+  base_url: "https://api.open-meteo.com/v1/forecast"
+  lat: 39.68        # Latitude for your location (example: Newark, DE)
+  lon: -75.75       # Longitude for your location
+  timezone: "auto"  # Automatically detect timezone from lat/lon
   params:
-    hourly: temperature_2m,relative_humidity_2m,precipitation
+    hourly: "temperature_2m,relative_humidity_2m,precipitation"
+
+# ✅ Bronze/S3 Configuration
+storage:
+  bronze_bucket: "bronze"  # Raw landing zone in MinIO
+  silver_bucket: "silver"  # Cleaned data
+  gold_bucket: "gold"      # Aggregated data
+
+# ✅ Spark Settings
+spark:
+  master: "spark://spark:7077"
+  executor_memory: "2g"
+  driver_memory: "1g"
+  shuffle_partitions: 8
+
+# ✅ Postgres Target Table
+postgres:
+  host: "postgres"
+  port: 5432
+  database: "airflow"
+  user: "airflow"
+  password: "airflow"
+  schema: "public"
+  table_stage: "weather_daily_stage"
+  table_final: "weather_daily"

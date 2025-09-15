@@ -90,8 +90,20 @@ services:
     volumes:
       - ../spark_jobs:/opt/spark_jobs
       - ./spark/spark-defaults.conf:/opt/bitnami/spark/conf/spark-defaults.conf
+  
 
-
+  metabase:
+    image: metabase/metabase:latest
+    depends_on:
+      - postgres
+    environment:
+      MB_DB_FILE: /metabase.db/metabase.db
+    volumes:
+      - ./metabase-data:/metabase.db
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    
 volumes:
   pgdata:
   minio_data:
