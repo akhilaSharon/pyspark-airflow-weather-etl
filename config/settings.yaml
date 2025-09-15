@@ -1,4 +1,3 @@
-```yaml
 project: weather_etl
 locations:
   bronze: s3a://bronze/openmeteo/
