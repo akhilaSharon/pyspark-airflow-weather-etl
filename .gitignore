@@ -1,0 +1,25 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.ipynb_checkpoints/
+
+# Data & logs
+data/
+logs/
+*.log
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.vscode/
+
+# Airflow
+airflow_home/
+airflow.db
+unittests.cfg
+
+# Docker volumes (don't commit local object storage)
+docker/*/data/

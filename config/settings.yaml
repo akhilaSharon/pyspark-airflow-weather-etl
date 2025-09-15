@@ -1,0 +1,13 @@
+```yaml
+project: weather_etl
+locations:
+  bronze: s3a://bronze/openmeteo/
+  silver: s3a://silver/openmeteo/
+  gold:   s3a://gold/openmeteo/
+source:
+  lat: 40.71
+  lon: -74.00
+  timezone: America/New_York
+  base_url: https://api.open-meteo.com/v1/forecast
+  params:
+    hourly: temperature_2m,relative_humidity_2m,precipitation
