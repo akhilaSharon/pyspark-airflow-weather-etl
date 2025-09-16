@@ -64,6 +64,7 @@ This launches:
 - **Spark Master & Worker**
 - **MinIO** (S3 UI at http://localhost:9000)
 - **Postgres**
+- **Metabase** (Web UI at http://localhost:3000) (Not in the Pipeline but on the Pipeline)
 
 ### 4️⃣ Open Airflow
 - **Username:** `airflow`  

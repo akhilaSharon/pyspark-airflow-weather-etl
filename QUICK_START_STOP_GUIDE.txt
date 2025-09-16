@@ -1,0 +1,49 @@
+QUICK START / RESTART GUIDE
+----------------------------
+
+Once you have cloned this repo and set it up once, you can easily stop and restart the whole environment whenever you need.
+
+STOPPING THE STACK:
+-------------------
+From the docker/ folder:
+
+    docker compose down
+
+This stops and removes all containers but keeps your MinIO data, Postgres tables, and logs because they are stored in Docker volumes.
+
+If you only want to pause (not remove) the containers:
+
+    docker compose stop
+
+You can resume paused containers later with:
+
+    docker compose start
+
+
+STARTING THE STACK AGAIN:
+-------------------------
+Whenever you want to work again, simply bring everything back up:
+
+    cd docker
+    docker compose up -d
+
+This will relaunch:
+- Airflow UI: http://localhost:8080 (user: airflow, pass: airflow)
+- MinIO: http://localhost:9000 (user: minio, pass: minio123)
+- Spark Master & Worker
+- Postgres
+
+Verify containers are running with:
+
+    docker compose ps
+
+You should see all containers showing "Up". Then head to the Airflow UI and trigger your DAGs or run backfills.
+
+
+FULL RESET (OPTIONAL):
+----------------------
+If you want to completely reset everything (including MinIO data & Postgres tables):
+
+    docker compose down -v
+
+WARNING: This deletes all volumes and data — use only if you want a clean slate.
