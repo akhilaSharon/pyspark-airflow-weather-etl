@@ -61,12 +61,12 @@ docker compose up -d
 
 This launches:
 - **Airflow** (web UI at http://localhost:8080)
-- **Spark Master & Worker**
+- **Spark Master & Worker** (Spark UI at http://localhost:8081)
 - **MinIO** (S3 UI at http://localhost:9000)
-- **Postgres**
-- **Metabase** (Web UI at http://localhost:3000) (Not in the Pipeline but on the Pipeline)
+- **Postgres** (localhost:5432 configured)
+- **Metabase** (Web UI at http://localhost:3000) (Not in the Pipeline but on the Pipeline, where you can build dashboards)
 
-### 4️⃣ Open Airflow
+### 4️⃣ Open Airflow 
 - **Username:** `airflow`  
 - **Password:** `airflow`  
 - Trigger the `weather_daily_etl` DAG manually to test.
